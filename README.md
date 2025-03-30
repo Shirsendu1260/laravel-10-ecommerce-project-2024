@@ -16,6 +16,7 @@ This is a robust and responsive e-commerce website built using Laravel 10 with a
 - Dropzone File Upload
 - Range Slider
 - Datetimepicker
+- And many more ...
 
 ## How to Run This Project on Your Local Machine
 Follow these steps to set up and run the project locally:
