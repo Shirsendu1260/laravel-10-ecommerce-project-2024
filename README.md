@@ -36,6 +36,7 @@ Follow these steps to set up and run the project locally:
    php artisan db:seed
    ```
    Or, import the provided SQL file.
+
 7. Start the development server:
    ```bash
    php artisan serve
