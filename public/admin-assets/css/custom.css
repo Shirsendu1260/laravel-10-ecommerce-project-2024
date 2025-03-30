@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* Chrome, Safari, Edge, Opera */
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} */
+
+/* Firefox */
+/* input[type=number] {
+    -moz-appearance: textfield;
+} */
+
+.w-4 {
+    width: 1rem;
+}
+
+.h-4 {
+    height: 1rem;
+}
+
+.w-6 {
+    width: 1.5rem;
+}
+
+.h-6 {
+    height: 1.5rem;
+}
+
+.dropzone {
+    border-radius: 5px;
+    border-style: dotted;
+    border-color: cornflowerblue;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button,
+.btn {
+    transition: transform 0.3s ease-in-out;
+}
+
+button:hover,
+.btn:hover {
+    transform: scale(1.03);
+}
+
+.edit_category:hover,
+.edit_sub_category:hover,
+.edit_brand:hover,
+.edit_product:hover,
+.edit_shipping:hover,
+.edit_discount_coupon:hover,
+.edit_user:hover,
+.edit_static_page:hover {
+    transform: scale(1.2);
+}
+
+.delete_category:hover,
+.delete_sub_category:hover,
+.delete_brand:hover,
+.delete_product:hover,
+.delete_shipping:hover,
+.delete_discount_coupon:hover,
+.remove_user:hover,
+.remove_static_page:hover {
+    transform: scale(1.2);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+    color: #000;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #fff;
+}
+
+.select2-container--default .select2-container--focus .select2-selection--multiple {
+    border: 1px solid #ced4da;
+}
+
+.rating-row-text {
+    font-size: 13px;
+    text-align: justify;
+    text-justify: inter-word;
+}

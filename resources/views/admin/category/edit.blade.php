@@ -1,0 +1,185 @@
+{{-- Layout --}}
+@extends('admin.layouts.app')
+
+{{-- Dashboard Section --}}
+@section('content')
+    <!-- Content Header (Page Header) -->
+    <section class="content-header">
+        <div class="container-fluid my-2">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Category</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a href="{{ route('admin_view_categories') }}" class="btn btn-dark">Back</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main Content -->
+    <section class="content">
+        <!-- Default Box -->
+        <div class="container-fluid">
+            <form id="categoryEditForm">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Name" value="{{ $category->name }}">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="slug">Slug</label>
+                                    <input type="text" name="slug" id="slug" class="form-control"
+                                        placeholder="Slug" value="{{ $category->slug }}" readonly>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Image</label>
+                                    <div id="imageSelector" class="dropzone dz-clickable">
+                                        <div class="dz-message needsclick">
+                                            <br>Drop image here or click to upload.<br><br>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="image_id" id="image_id" value="">
+                                </div>
+                                <div id="categoryThumbnail">
+                                    @if ($category->image != null)
+                                        <img src="{{ asset('uploads/category/thumbnails/' . $category->image) }}"
+                                            class="img-thumbnail mb-3">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status">Status</label>
+                                    <select class="custom-select" name="status" id="status">
+                                        <option {{ $category->status == 1 ? 'selected' : '' }} value="1">Active
+                                        </option>
+                                        <option {{ $category->status == 0 ? 'selected' : '' }} value="0">Inactive
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="show_on_homepage">Show On Homepage</label>
+                                    <select class="custom-select" name="show_on_homepage" id="show_on_homepage">
+                                        <option {{ $category->show_on_homepage == 1 ? 'selected' : '' }} value="1">Yes
+                                        </option>
+                                        <option {{ $category->show_on_homepage == 0 ? 'selected' : '' }} value="0">No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-5 pt-3">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                    <button type="reset" class="btn btn-outline-dark ml-3">Reset</button>
+                </div>
+            </form>
+        </div>
+    </section>
+@endsection
+
+@section('customJs')
+    <script>
+        $('#name').on('input', function() {
+            var data = $(this).val().toLowerCase().replace(/[^a-z0-9\s]/gi, "").replace(
+                    /^\s+|\s+$|\s+(?=\s)/g, "")
+                .replace(/[_\s]/g, "-");
+            $('#slug').val(data);
+        });
+
+        $('#categoryEditForm').submit(function(event) {
+            event.preventDefault();
+            $('button[type=submit]').prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('admin_update_category', $category->id) }}",
+                type: 'put',
+                data: $(this).serializeArray(),
+                dataType: 'json',
+                success: function(response) {
+                    $('button[type=submit]').prop('disabled', false);
+
+                    if (response['status'] == true) {
+                        $('#name').removeClass('is-invalid').siblings('p').removeClass(
+                            'invalid-feedback').html('');
+                        $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                            'invalid-feedback').html('');
+
+                        window.location.href = "{{ route('admin_view_categories') }}";
+                    } else {
+                        // If record was not found, redirect to category listing page
+                        if (response['notFound'] == true) {
+                            window.location.href = "{{ route('admin_view_categories') }}";
+                        }
+
+                        $('button[type=submit]').prop('disabled', false);
+                        var errors = response['msg'];
+
+                        if (errors['name']) {
+                            $('#name').addClass('is-invalid').siblings('p').addClass(
+                                    'invalid-feedback')
+                                .html(errors['name']);
+                        } else {
+                            $('#name').removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                        }
+                        if (errors['slug']) {
+                            $('#slug').addClass('is-invalid').siblings('p').addClass(
+                                    'invalid-feedback')
+                                .html(errors['slug']);
+                        } else {
+                            $('#slug').removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                        }
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    alert('Error occured!');
+                },
+            });
+        });
+
+        Dropzone.autoDiscover = false;
+        const dropzone = $("#imageSelector").dropzone({
+            init: function() {
+                this.on('addedfile', function(file) {
+                    if (this.files.length > 1) {
+                        this.removeFile(this.files[0]);
+                    }
+                });
+            },
+            url: "{{ route('temp_images_create') }}",
+            type: 'post',
+            maxFiles: 1,
+            paramName: 'image',
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/jpg,image/png",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(file, response) {
+                $("#image_id").val(response.image_id);
+                //console.log(response);
+
+                var imgUrl = "{{ asset('uploads/temp_images/') }}/";
+                var thumbnailHTML = "<img src='" + imgUrl + response.newFileName +
+                    "' class='img-thumbnail mb-3' width='210' height='210'>";
+                $('#categoryThumbnail').empty();
+                $('#categoryThumbnail').append(thumbnailHTML);
+            }
+        });
+    </script>
+@endsection
