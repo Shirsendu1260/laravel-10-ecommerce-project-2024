@@ -8,7 +8,7 @@
         <div class="container-fluid my-2">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Users</h1>
+                    <h1>Static Pages</h1>
                 </div>
                 <div class="col-sm-6 text-right">
                     <a href="{{ route('admin_create_user_page') }}" class="btn btn-warning">Add New User</a>
