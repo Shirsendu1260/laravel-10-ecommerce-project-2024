@@ -44,6 +44,24 @@ Follow these steps to set up and run the project locally:
 8. Open your browser and visit `http://127.0.0.1:8000` to access the application.
 
 ## Project Screenshots
-(Add screenshots here)
+![Screenshot (458)](https://github.com/user-attachments/assets/c1f19636-58e7-434d-a5d8-bcd60164037f)
+![Screenshot (459)](https://github.com/user-attachments/assets/9c9725d3-3dae-405a-a8df-b26982613719)
+![Screenshot (460)](https://github.com/user-attachments/assets/6de70db5-73ad-4c85-bdd0-4fc364693db0)
+![Screenshot (463)](https://github.com/user-attachments/assets/3ebd7585-189e-4b30-b266-608b3e79844b)
+![Screenshot (465)](https://github.com/user-attachments/assets/37eec135-7c61-4642-9f09-2c933e584119)
+![Screenshot (466)](https://github.com/user-attachments/assets/08a91b90-65c2-4629-a445-e8b0f67d65ff)
+![Screenshot (469)](https://github.com/user-attachments/assets/8b81524c-a604-45b6-9e61-01e40fc459b7)
+![Screenshot (471)](https://github.com/user-attachments/assets/441a83de-167f-4825-967c-415fe4fa5a28)
+![Screenshot (473)](https://github.com/user-attachments/assets/f7be70f7-ec35-4efa-9bfe-ce43b1cc87a1)
+![Screenshot (479)](https://github.com/user-attachments/assets/6fdac0ec-ce0c-4734-ad08-40b5e0df711d)
+![Screenshot (478)](https://github.com/user-attachments/assets/11e84ac6-0443-4a58-ab7a-b7534d307eb4)
+![Screenshot (483)](https://github.com/user-attachments/assets/f1d5b2b5-292c-4643-b0d0-b3a48efe5ddb)
+![Screenshot (484)](https://github.com/user-attachments/assets/96995e67-c0bb-45b8-9317-5ee700a5e4f7)
+![Screenshot (487)](https://github.com/user-attachments/assets/b7aaf8be-046f-4011-8cd8-72a2b032ec53)
+![Screenshot (489)](https://github.com/user-attachments/assets/ed8c15ae-876f-417c-b94c-cd5880808107)
+![Screenshot (490)](https://github.com/user-attachments/assets/815d69a7-bff5-4d29-abd6-a927840f61bf)
+![Screenshot (492)](https://github.com/user-attachments/assets/2c03221f-cdc7-4c46-8724-97b170aebdb5)
+![Screenshot (495)](https://github.com/user-attachments/assets/fa762902-7155-43c7-a0fc-18a327f7015f)
+![Screenshot (496)](https://github.com/user-attachments/assets/f8616446-f0eb-48fd-a571-01dae6521107)
 
 ---
