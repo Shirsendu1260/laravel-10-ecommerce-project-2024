@@ -24,6 +24,11 @@ Follow these steps to set up and run the project locally:
 1. Create a `.env` file if it doesn't exist.
 2. Copy all content from `.env.example` into the new `.env` file.
 3. Modify the `.env` file according to your environment settings.
+4. Run the following command to install composer dependencies:
+   ```bash
+   composer install
+   ```
+   This command reads the `composer.json` file and downloads all the necessary packages into the `vendor/` directory.
 4. Run the following command to generate an application key:
    ```bash
    php artisan key:generate
