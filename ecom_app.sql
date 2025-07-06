@@ -620,7 +620,7 @@ CREATE TABLE `products` (
   `slug` varchar(255) NOT NULL,
   `description` longtext DEFAULT NULL,
   `short_desc` text DEFAULT NULL,
-  `shipping_returns` varchar(255) NOT NULL DEFAULT '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Sed do</strong> eiusmod tempor <strong>incididunt</strong>.</p>',
+  `shipping_returns` varchar(255) NOT NULL DEFAULT '<p>Lorem ipsum dolor sit amet, consectetur <b>adipiscing</b> elit. Sed do eiusmod tempor <b>incididunt</b> ut labore et dolore magna aliqua. Ut enim ad minim.</p>',
   `related_products` text DEFAULT NULL,
   `price` double(10,2) NOT NULL,
   `compare_price` double(10,2) DEFAULT NULL,
