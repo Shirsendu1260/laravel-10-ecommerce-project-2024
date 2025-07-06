@@ -24,11 +24,13 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Install dependencies
-RUN composer install
+# Install PHP dependencies
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Generate app key
-RUN php artisan key:generate
+# Give permission to storage and bootstrap cache
+RUN chmod -R 777 storage bootstrap/cache
 
-# Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=10000
+# Start Laravel server and generate key at runtime
+CMD php artisan config:clear && \
+    php artisan key:generate && \
+    php artisan serve --host=0.0.0.0 --port=10000
