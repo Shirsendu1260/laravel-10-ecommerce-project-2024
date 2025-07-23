@@ -219,7 +219,7 @@ class CheckoutController extends Controller
         }
 
         // Send order success mail
-        send_order_success_mail($unique_order_id, $order->email, 'customer');
+        // send_order_success_mail($unique_order_id, $order->email, 'customer');
 
         session()->flash('success', 'Order placed successfully.');
 
@@ -263,7 +263,7 @@ class CheckoutController extends Controller
             $order->save();
 
             // Send order success mail
-            send_order_success_mail($unique_order_id, $order->email, 'customer');
+            // send_order_success_mail($unique_order_id, $order->email, 'customer');
 
             Cart::destroy(); // As order is saved already, clear the cart (from session)
             session()->forget('discount_coupon');
