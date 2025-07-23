@@ -90,18 +90,18 @@ class UserEndController extends Controller
         ]);
 
         if ($validator->passes()) {
-            $mail_data = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'subject' => $request->subject,
-                'message' => $request->message,
-                'mail_subject' => 'You have received a contact email - Laravel ECOM',
-            ];
+            // $mail_data = [
+            //     'name' => $request->name,
+            //     'email' => $request->email,
+            //     'subject' => $request->subject,
+            //     'message' => $request->message,
+            //     'mail_subject' => 'You have received a contact email - Laravel ECOM',
+            // ];
 
-            // Send mail that user sent to main admin
-            $setting = Setting::find(1);
-            $admin = User::find($setting->main_admin_id);
-            Mail::to($admin->email)->send(new ContactMail($mail_data));
+            // // Send mail that user sent to main admin
+            // $setting = Setting::find(1);
+            // $admin = User::find($setting->main_admin_id);
+            // Mail::to($admin->email)->send(new ContactMail($mail_data));
 
             session()->flash('success', 'Thanks for reaching out with us, we will get back to you soon.');
 
