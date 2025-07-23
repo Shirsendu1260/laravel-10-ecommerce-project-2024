@@ -82,12 +82,12 @@ class AuthController extends Controller
 
             $msg = "Welcome, " . $request->name . "! Thank you for signing up.";
 
-            // Code for sending welcome mail
-            $mail_data = [
-                'title' => 'Welcome to our online store - Laravel ECOM',
-                'body' => '<p>Welcome, <b>' . $request->name . '</b>,<br><br>Thank you for signing up with us! Visit our shop page and start your shopping journey now.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
-            ];
-            Mail::to($request->email)->send(new SendWelcomeMail($mail_data));
+            // // Code for sending welcome mail
+            // $mail_data = [
+            //     'title' => 'Welcome to our online store - Laravel ECOM',
+            //     'body' => '<p>Welcome, <b>' . $request->name . '</b>,<br><br>Thank you for signing up with us! Visit our shop page and start your shopping journey now.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
+            // ];
+            // Mail::to($request->email)->send(new SendWelcomeMail($mail_data));
 
             $request->session()->flash("success", $msg);
 
@@ -174,12 +174,12 @@ class AuthController extends Controller
 
             $msg = 'Profile updated successfully.';
 
-            // Code for sending welcome mail
-            $mail_data = [
-                'title' => 'Profile Updated Successfully - Laravel ECOM',
-                'body' => '<p>Dear, <b>' . $request->name . '</b>,<br><br>Your profile information has been successfully updated. Your updated information is now live.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
-            ];
-            Mail::to($request->email)->send(new ProfileUpdateMail($mail_data));
+            // // Code for sending welcome mail
+            // $mail_data = [
+            //     'title' => 'Profile Updated Successfully - Laravel ECOM',
+            //     'body' => '<p>Dear, <b>' . $request->name . '</b>,<br><br>Your profile information has been successfully updated. Your updated information is now live.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
+            // ];
+            // Mail::to($request->email)->send(new ProfileUpdateMail($mail_data));
 
             $request->session()->flash("success", $msg);
 
@@ -396,12 +396,12 @@ class AuthController extends Controller
                     ]);
                 }
 
-                $mail_data = [
-                    'title' => 'Reset Your Password - Laravel ECOM',
-                    'body' => '<p>Hi, <b>' . $user->name . '</b>,<br><br>We have sent you this email because you have requested a password reset. Click <a href=' . route('user_reset_password_page', $token) . '>here</a> to create a new password.<br>If you didn\'t request a password reset, you can safely ignore this email. Only a person with access to your email address can reset your account password.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
-                    'token' => $token,
-                ];
-                Mail::to($request->email)->send(new ResetPasswordMail($mail_data));
+                // $mail_data = [
+                //     'title' => 'Reset Your Password - Laravel ECOM',
+                //     'body' => '<p>Hi, <b>' . $user->name . '</b>,<br><br>We have sent you this email because you have requested a password reset. Click <a href=' . route('user_reset_password_page', $token) . '>here</a> to create a new password.<br>If you didn\'t request a password reset, you can safely ignore this email. Only a person with access to your email address can reset your account password.<br><br>Best wishes,<br>from <b>Laravel ECOM</b> Team</p>',
+                //     'token' => $token,
+                // ];
+                // Mail::to($request->email)->send(new ResetPasswordMail($mail_data));
 
                 return redirect()->route('user_forgot_password_page')
                     ->with('success', "We have sent you a password reset mail to you email address.");
