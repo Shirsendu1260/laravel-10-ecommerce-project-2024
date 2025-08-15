@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post("/remove-discount", [CheckoutController::class, "remove_discount"])->name("userend_remove_discount");
 
     // For Razorpay payment related
-    Route::get("/razorpay-callback", [CheckoutController::class, "razorpay_callback"])->name("userend_razorpay_callback");
+    // Route::get("/razorpay-callback", [CheckoutController::class, "razorpay_callback"])->name("userend_razorpay_callback");
 });
 
 
