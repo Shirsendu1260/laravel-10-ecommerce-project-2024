@@ -218,14 +218,14 @@
                                         <label
                                             class="btn btn-light border border-2 rounded-0 me-3 d-flex align-items-center"
                                             style="font-size: 14.5px;" for="payment_method_1">Cash On Delivery</label>
-                                        <input type="radio" class="btn-check" name="payment_method"
+                                        {{-- <input type="radio" class="btn-check" name="payment_method"
                                             id="payment_method_2" value="razorpay">
                                         <label
                                             class="btn btn-light border border-2 rounded-0 p-1 d-flex align-items-center"
                                             for="payment_method_2">
                                             <img src="{{ asset('user-assets/images/razorpay.svg') }}" alt="razorpay"
                                                 style="width: 85px;" class="mx-2">
-                                        </label>
+                                        </label> --}}
                                     </div>
                                 </div>
                                 <div class="pt-4">
@@ -254,8 +254,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                     <button type="submit" class="btn btn-warning" id="modalYesBtn">Yes</button>
-                                    <button type="submit" class="btn btn-warning" id="modalYesRazorpay"
-                                        style="display: none">Yes</button>
+                                    {{-- <button type="submit" class="btn btn-warning" id="modalYesRazorpay"
+                                        style="display: none">Yes</button> --}}
                                 </div>
                             </div>
                         </div>
@@ -295,18 +295,18 @@
             $("#payment-method-span").text("Cash On Delivery");
             $(".pay-now-btn").fadeIn('fast');
             $("#modalYesBtn").show();
-            $("#modalYesRazorpay").hide();
+            // $("#modalYesRazorpay").hide();
         });
 
-        $("#payment_method_2").click(function() {
-            let paymentMethod = $(this).val();
-            // console.log(paymentMethod);
+        // $("#payment_method_2").click(function() {
+        //     let paymentMethod = $(this).val();
+        //     // console.log(paymentMethod);
 
-            $("#payment-method-span").text("Razorpay");
-            $(".pay-now-btn").fadeIn('fast');
-            $("#modalYesBtn").hide();
-            $("#modalYesRazorpay").show();
-        });
+        //     $("#payment-method-span").text("Razorpay");
+        //     $(".pay-now-btn").fadeIn('fast');
+        //     $("#modalYesBtn").hide();
+        //     $("#modalYesRazorpay").show();
+        // });
     </script>
 
     <script>
