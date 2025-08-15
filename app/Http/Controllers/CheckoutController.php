@@ -198,25 +198,25 @@ class CheckoutController extends Controller
             }
         }
 
-        // If payment method is 'razorpay'
-        if ($request->payment_method == 'razorpay') {
-            $api = new Api(env('RAZORPAY_PUBLIC_KEY'), env('RAZORPAY_SECRET_KEY'));
-            // dd(env('RAZORPAY_PUBLIC_KEY'));
+        // // If payment method is 'razorpay'
+        // if ($request->payment_method == 'razorpay') {
+        //     $api = new Api(env('RAZORPAY_PUBLIC_KEY'), env('RAZORPAY_SECRET_KEY'));
+        //     // dd(env('RAZORPAY_PUBLIC_KEY'));
 
-            $razorpay_order_data = [
-                'receipt' => 'order_' . rand(1000, 9999),
-                'amount' => $grand_total * 100, // AS it is in Paisa, so multiply 100 to this rupees amount
-                'currency' => 'INR',
-                'payment_capture' => 1, // For capturing payment automatically
-            ];
+        //     $razorpay_order_data = [
+        //         'receipt' => 'order_' . rand(1000, 9999),
+        //         'amount' => $grand_total * 100, // AS it is in Paisa, so multiply 100 to this rupees amount
+        //         'currency' => 'INR',
+        //         'payment_capture' => 1, // For capturing payment automatically
+        //     ];
 
-            $razorpay_order = $api->order->create($razorpay_order_data);
-            $razorpay_order_id = $razorpay_order['id'];
-            $amount = $grand_total * 100;
-            $customer = Auth::user()->select('name', 'email', 'phone');
+        //     $razorpay_order = $api->order->create($razorpay_order_data);
+        //     $razorpay_order_id = $razorpay_order['id'];
+        //     $amount = $grand_total * 100;
+        //     $customer = Auth::user()->select('name', 'email', 'phone');
 
-            return view('user-end.razorpay-payment', compact('razorpay_order_id', 'amount', 'customer', 'unique_order_id'));
-        }
+        //     return view('user-end.razorpay-payment', compact('razorpay_order_id', 'amount', 'customer', 'unique_order_id'));
+        // }
 
         // Send order success mail
         // send_order_success_mail($unique_order_id, $order->email, 'customer');
@@ -234,48 +234,48 @@ class CheckoutController extends Controller
     }
 
     // For verify payment
-    public function razorpay_callback(Request $request)
-    {
-        $payment_id = urldecode(base64_decode($request->get("payment_id"))); // Decode from Base64
-        $order_id = urldecode(base64_decode($request->get("order_id"))); // Decode from Base64
-        $sign = urldecode(base64_decode($request->get("sign"))); // Decode from Base64
-        $unique_order_id = urldecode(base64_decode($request->get("unique_order_id"))); // Decode from Base64
+    // public function razorpay_callback(Request $request)
+    // {
+    //     $payment_id = urldecode(base64_decode($request->get("payment_id"))); // Decode from Base64
+    //     $order_id = urldecode(base64_decode($request->get("order_id"))); // Decode from Base64
+    //     $sign = urldecode(base64_decode($request->get("sign"))); // Decode from Base64
+    //     $unique_order_id = urldecode(base64_decode($request->get("unique_order_id"))); // Decode from Base64
 
-        $api = new Api(env('RAZORPAY_PUBLIC_KEY'), env('RAZORPAY_SECRET_KEY'));
+    //     $api = new Api(env('RAZORPAY_PUBLIC_KEY'), env('RAZORPAY_SECRET_KEY'));
 
-        // Collect the order information
-        $order = Order::where('unique_order_id', $unique_order_id)->first();
+    //     // Collect the order information
+    //     $order = Order::where('unique_order_id', $unique_order_id)->first();
 
-        try {
-            $attr = [
-                'razorpay_order_id' => $order_id,
-                'razorpay_payment_id' => $payment_id,
-                'razorpay_signature' => $sign,
-            ];
+    //     try {
+    //         $attr = [
+    //             'razorpay_order_id' => $order_id,
+    //             'razorpay_payment_id' => $payment_id,
+    //             'razorpay_signature' => $sign,
+    //         ];
 
-            // Verify payment
-            $api->utility->verifyPaymentSignature($attr);
+    //         // Verify payment
+    //         $api->utility->verifyPaymentSignature($attr);
 
-            // Update order data in database for the specific order id
-            $order->payment_status = 'paid';
-            $order->payment_id = $payment_id;
-            $order->razorpay_payment_datetime = Carbon::now();
-            $order->save();
+    //         // Update order data in database for the specific order id
+    //         $order->payment_status = 'paid';
+    //         $order->payment_id = $payment_id;
+    //         $order->razorpay_payment_datetime = Carbon::now();
+    //         $order->save();
 
-            // Send order success mail
-            // send_order_success_mail($unique_order_id, $order->email, 'customer');
+    //         // Send order success mail
+    //         // send_order_success_mail($unique_order_id, $order->email, 'customer');
 
-            Cart::destroy(); // As order is saved already, clear the cart (from session)
-            session()->forget('discount_coupon');
+    //         Cart::destroy(); // As order is saved already, clear the cart (from session)
+    //         session()->forget('discount_coupon');
 
-            return redirect()->route('userend_order_successful_page', base64_encode(urlencode($unique_order_id)))
-                ->with('success', 'Order placed and payment done successfully.');
-        } catch (\Exception $e) {
-            $order->delete();
-            return redirect()->route('userend_checkout_page')
-                ->with('error', 'Failed to place this order, payment verification failed. Please try again or else you can proceed with other payment methods.');
-        }
-    }
+    //         return redirect()->route('userend_order_successful_page', base64_encode(urlencode($unique_order_id)))
+    //             ->with('success', 'Order placed and payment done successfully.');
+    //     } catch (\Exception $e) {
+    //         $order->delete();
+    //         return redirect()->route('userend_checkout_page')
+    //             ->with('error', 'Failed to place this order, payment verification failed. Please try again or else you can proceed with other payment methods.');
+    //     }
+    // }
 
     public function thank_you($unique_order_id)
     {
