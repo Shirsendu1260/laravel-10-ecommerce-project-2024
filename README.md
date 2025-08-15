@@ -11,7 +11,6 @@ This is a robust and responsive e-commerce website built using Laravel 10 with a
 - HTML
 - CSS
 - Bootstrap
-- Razorpay Payment Gateway
 - Image Intervention v3
 - Dropzone File Upload
 - Range Slider
