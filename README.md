@@ -1,7 +1,7 @@
 # Laravel 10 E-Commerce Project 2024
 
 ## About the Project
-This is a robust and responsive e-commerce website built using Laravel 10 with an integrated admin panel for managing products, orders, users, and more. The project includes a Razorpay payment gateway, file uploads, advanced filtering, and interactive UI components.
+This is a robust and responsive e-commerce website built using Laravel 10 with an integrated admin panel for managing products, orders, users, and more. The project includes file uploads, advanced filtering, and interactive UI components.
 
 ## Technologies Used
 - Laravel 10
