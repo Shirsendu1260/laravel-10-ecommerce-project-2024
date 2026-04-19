@@ -967,16 +967,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `role`, `gender`, `country_code`, `phone`, `email`, `email_verified_at`, `password`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'S. Mali', '1', 'M', '+91', '9123944555', 'admin1@gmail.com', NULL, '$2y$10$nBvBHvCoL/jz2rb0hdFrT.MZBeC8zclomAzVtQfdSAtMK2f1xX55u', NULL, '1', '2024-09-17 05:07:16', '2025-03-19 05:26:56'),
-(2, 'S. Sarma', '0', 'F', '+91', '9599912345', 'ssm@gmail.com', NULL, '$2y$10$6caZE0ArCJG3JL.dnYcAoOnMzQGMcHjs6/S/Q4wYnAx59QF3vEgTy', NULL, '1', '2024-09-17 05:19:40', '2024-09-17 05:19:40'),
-(5, 'K. Mali', '0', 'M', '+91', '9222355515', 'shirsendu1260@gmail.com', NULL, '$2y$10$jllBfxrrI1jMFP99OzjDxuSsFYb2mENsDRrBilQb079nurrJtsmby', NULL, '1', '2025-02-14 05:57:38', '2025-03-22 03:33:51'),
-(6, 'P. Biswas', '1', 'M', '+91', '7998899111', 'admin2@gmail.com', NULL, '$2y$10$Ia9lpqeujEOzfqC2U1sMKOcfZfP5PkiXQhsRB.dv1NXoEgD7pk3Ky', NULL, '1', '2025-03-18 01:23:54', '2025-03-18 01:23:54'),
-(7, 'M. Paul', '1', 'F', '+91', '8888811550', 'admin3@gmail.com', NULL, '$2y$10$xbnfv2E8UB7iBnWMqUvnNODFohhTfLtv1lTrcrDs0ZDj4EPBrpP.C', NULL, '1', '2025-03-18 01:26:44', '2025-03-18 02:15:22'),
-(8, 'P. Das', '0', 'M', '+91', '6666655221', 'pd@gmail.com', NULL, '$2y$10$YXXesCz.LAESrbOd/yyWw.we7v/VYpAMcnXTMK9kno7PjMtrm4wjC', NULL, '1', '2025-03-18 01:29:47', '2025-03-28 01:11:50');
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `wishlists`
 --
